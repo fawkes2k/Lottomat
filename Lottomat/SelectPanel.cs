@@ -2,9 +2,10 @@
 {
     public partial class SelectPanel : FlowLayoutPanel
     {
-        public readonly byte fieldNumber = 48;
+        public readonly byte fieldNumber = 49;
         public readonly byte maximumSelection = 6;
-        public List<byte> SelectedNumbers {
+        public List<byte> SelectedNumbers
+        {
             get => Controls.OfType<Button>().Where(button => button.FlatStyle == FlatStyle.Flat).Select(button => byte.Parse(button.Text)).ToList();
         }
 
@@ -37,7 +38,7 @@
         {
             if (sender is Button button)
             {
-                if (button.FlatStyle == FlatStyle.Standard && SelectedNumbers.Count < maximumSelection)  button.FlatStyle = FlatStyle.Flat;
+                if (button.FlatStyle == FlatStyle.Standard && SelectedNumbers.Count < maximumSelection) button.FlatStyle = FlatStyle.Flat;
                 else button.FlatStyle = FlatStyle.Standard;
                 Changed?.Invoke(sender, e);
             }
